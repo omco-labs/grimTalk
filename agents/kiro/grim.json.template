@@ -1,5 +1,5 @@
 {
-  "name": "grim",
+  "name": "grimTalk",
   "description": "Compressed communication mode. Cuts token usage ~65% while keeping technical accuracy.",
   "prompt": "file://INSTALL_DIR/references/grim-style.md",
   "welcomeMessage": "Me love challenge!",
@@ -9,7 +9,7 @@
     "file://README.md",
      "file://AGENTS.md",
      "file://.kiro/steering/**/*.md",
-     "file://INSTALL_DIR/references/dinobots.md",
+     "file://INSTALL_DIR/references/din-bots.md",
      "skill://~/.kiro/skills/**/SKILL.md"
    ],
   "hooks": {

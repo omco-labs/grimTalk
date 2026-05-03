@@ -1,4 +1,4 @@
-# grim
+# grimTalk
 
 Compressed communication mode for AI coding agents. Cuts token usage ~65% while keeping technical accuracy.
 
@@ -11,7 +11,7 @@ Warrior prose. No fluff. Code strong.
 - **grim-review** — one-line PR findings with severity emoji
 - **grim-compress** — compresses `.md` memory/doc files to caveman prose (~46% input token savings)
 - **grim-stats** — token usage + savings for current session
-- **Dinobots** — subagent presets that return compressed tool results, shrinking main context per delegation
+- **Din-bots** — subagent presets that return compressed tool results, shrinking main context per delegation
 
 ## Install
 
@@ -23,11 +23,11 @@ bash agents/kiro/install.sh
 
 Reinstall: `--force`. Remove: `--uninstall`.
 
-Writes skill files to `~/.kiro/skills/grim/` and agent config to `~/.kiro/agents/grim.json`. Restart Kiro to activate.
+Writes skill files to `~/.kiro/skills/grimTalk/` and agent config to `~/.kiro/agents/grim.json`. Restart Kiro to activate.
 
 #### Optional
 
-Start kiro with the Grim agent:
+Start kiro with the grimTalk agent:
 ```bash
 kiro-cli chat --agent grim
 ```
@@ -45,13 +45,13 @@ bash agents/claude/install.sh
 
 Reinstall: `--force`. Remove: `--uninstall`.
 
-Writes skill files to `~/.claude/skills/grim/` and wires `SessionStart` + `UserPromptSubmit` hooks into `~/.claude/settings.json`. Restart Claude Code to activate.
+Writes skill files to `~/.claude/skills/grimTalk/` and wires `SessionStart` + `UserPromptSubmit` hooks into `~/.claude/settings.json`. Restart Claude Code to activate.
 
 **Requires:** Python 3.10+ (for `grim-compress` only; all other sub-skills are model-driven)
 
 ## Usage
 
-Grim is both a **skill** (slash command) and a **custom agent**. The `/grim` slash command activates the skill. Sub-skill behaviors are triggered by natural language keywords — the model matches them from the injected `SKILL.md`.
+grimTalk is both a **skill** (slash command) and a **custom agent**. The `/grim` slash command activates the skill. Sub-skill behaviors are triggered by natural language keywords — the model matches them from the injected `SKILL.md`.
 
 ### Mode control
 
@@ -62,9 +62,9 @@ Grim is both a **skill** (slash command) and a **custom agent**. The `/grim` sla
 | `/grim full` | Classic grim — fragments, short synonyms |
 | `/grim ultra` | Max compression — arrows for causality, abbreviate prose |
 
-Natural language also works: `"dinobot mode"`, `"talk like grim"`, `"less tokens"`, `"smash word"`.
+Natural language also works: `"din-bot mode"`, `"talk like grim"`, `"less tokens"`, `"smash word"`.
 
-Deactivate: say `stop grim`, `stop dinobot`, or `normal mode`.
+Deactivate: say `stop grim`, `stop din-bot`, or `normal mode`.
 
 ### Sub-skills (keyword-triggered)
 
@@ -75,7 +75,7 @@ Deactivate: say `stop grim`, `stop dinobot`, or `normal mode`.
 | `"compress memory file"` / `"grim-compress <file>"` | Compress `.md` file to caveman prose (runs `python3 -m scripts`) |
 | `"grim help"` / `"what grim commands"` | Quick-reference card |
 | `"grim stats"` | Token usage + savings for current session |
-| `"use dinobots"` / `"delegate to subagent"` / `"save context"` | Subagent delegation guide |
+| `"use din-bots"` / `"delegate to subagent"` / `"save context"` | Subagent delegation guide |
 
 ## Intensity levels
 
@@ -94,7 +94,7 @@ Technical terms, code symbols, function names, API names, error strings: **never
 export GRIM_DEFAULT_MODE=ultra
 ```
 
-**Config file** (`~/.config/dinobot/config.json`):
+**Config file** (`~/.config/din-bot/config.json`):
 ```json
 { "defaultMode": "full" }
 ```
@@ -122,7 +122,7 @@ references/
   grim-help.md            — quick-reference card
   grim-stats.md           — token stats rules
   grim-style.md           — style guide & rules for agent prompt
-  dinobots.md             — subagent delegation guide
+  din-bots.md             — subagent delegation guide
 scripts/
   compress.py             — compression orchestrator
   detect.py               — file type detection

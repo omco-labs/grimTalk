@@ -43,4 +43,4 @@ Example — destructive op:
 
 ## Boundaries
 
-MRs/PRs: write normal. "stop grim", "stop dinobot", or "normal mode": revert. Level persist until changed or session end.
+MRs/PRs: write normal. "stop grim", "stop din-bot", or "normal mode": revert. Level persist until changed or session end.

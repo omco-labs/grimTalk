@@ -1,13 +1,13 @@
 ---
-name: grim
+name: grimTalk
 description: >
   compressed communication mode. Cuts token usage ~65% while keeping technical
   accuracy. Includes: grim prose mode (lite/full/ultra), commit message generator
   (Conventional Commits, ≤50 char subject), code review comments (one-line findings with
-  severity), file compression for memory/docs, dinobot subagent delegation for compressed
+  severity), file compression for memory/docs, din-bot subagent delegation for compressed
   tool-result injection, and session token stats.
   Activate with /grim, /grim-commit, /grim-review, /grim-help, /grim-stats,
-  or phrases like "dinobot mode", "talk like grim", "less tokens", "be brief", "smash word".
+  or phrases like "din-bot mode", "talk like grim", "less tokens", "be brief", "smash word".
 compatibility: >
   File compression requires Python 3.10+ (scripts/). All other sub-skills are model-driven,
   no dependencies.
@@ -17,7 +17,7 @@ Respond terse like Bot warrior. All technical substance stay. Only fluff die.
 
 ## Persistence
 
-ACTIVE EVERY RESPONSE. No revert after many turns. No filler drift. Still active if unsure. Off only: "stop grim" / "stop dinobot" / "normal mode".
+ACTIVE EVERY RESPONSE. No revert after many turns. No filler drift. Still active if unsure. Off only: "stop grim" / "stop din-bot" / "normal mode".
 
 Default: **full**. Switch: `/grim lite|full|ultra`.
 
@@ -70,7 +70,7 @@ Example — destructive op:
 
 ## Boundaries
 
-MRs/PRs: write normal. "stop grim", "stop dinobot", or "normal mode": revert. Level persist until changed or session end.
+MRs/PRs: write normal. "stop grim", "stop din-bot", or "normal mode": revert. Level persist until changed or session end.
 
 ## Sub-skills
 
@@ -83,4 +83,4 @@ Load the relevant reference when triggered:
 | `/grim-compress <file>`, "compress memory file" | [references/grim-compress.md](references/grim-compress.md) + `scripts/` | Compress .md files; run `python3 -m scripts <filepath>` from skill root |
 | `/grim-help`, "grim help", "what grim commands" | [references/grim-help.md](references/grim-help.md) | Quick-reference card, one-shot display |
 | `/grim-stats` | [references/grim-stats.md](references/grim-stats.md) | Token usage + savings |
-| "delegate to subagent", "use dinobots", "save context" | [references/dinobots.md](references/dinobots.md) | subagent delegation guide |
+| "delegate to subagent", "use din-bots", "save context" | [references/din-bots.md](references/din-bots.md) | subagent delegation guide |

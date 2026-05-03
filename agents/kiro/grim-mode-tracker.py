@@ -12,15 +12,15 @@ kiro_dir = Path(os.environ.get("KIRO_CONFIG_DIR", Path.home() / ".kiro"))
 flag_path = kiro_dir / ".grim-active"
 
 DEACTIVATE = re.compile(
-    r"\b(stop|disable|deactivate|turn off)\b.{0,20}\b(grim|dinobot)\b"
-    r"|\b(grim|dinobot)\b.{0,20}\b(stop|disable|deactivate|turn off)\b"
+    r"\b(stop|disable|deactivate|turn off)\b.{0,20}\b(grim|din-bot)\b"
+    r"|\b(grim|din-bot)\b.{0,20}\b(stop|disable|deactivate|turn off)\b"
     r"|\bnormal mode\b",
     re.IGNORECASE,
 )
 
 ACTIVATE = re.compile(
-    r"\b(grim|dinobot)\b.{0,30}\b(mode|on|activate|enable)\b"
-    r"|\b(activate|enable|turn on)\b.{0,20}\b(grim|dinobot)\b",
+    r"\b(grim|din-bot)\b.{0,30}\b(mode|on|activate|enable)\b"
+    r"|\b(activate|enable|turn on)\b.{0,20}\b(grim|din-bot)\b",
     re.IGNORECASE,
 )
 

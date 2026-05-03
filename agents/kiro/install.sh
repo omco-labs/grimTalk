@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# grim — Kiro CLI skill installer
+# grimTalk — Kiro CLI skill installer
 # Usage:
 #   bash install.sh              install
 #   bash install.sh --force      reinstall over existing
@@ -16,7 +16,7 @@ for arg in "$@"; do
 done
 
 KIRO_DIR="${KIRO_CONFIG_DIR:-$HOME/.kiro}"
-INSTALL_DIR="$KIRO_DIR/skills/grim"
+INSTALL_DIR="$KIRO_DIR/skills/grimTalk"
 AGENT_FILE="$KIRO_DIR/agents/grim.json"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -43,7 +43,7 @@ fi
 
 # ---------- INSTALL ----------
 
-echo "Installing grim..."
+echo "Installing grimTalk..."
 
 mkdir -p "$INSTALL_DIR/references"
 mkdir -p "$INSTALL_DIR/scripts"

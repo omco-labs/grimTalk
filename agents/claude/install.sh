@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# grim — Claude Code skill installer
+# grimTalk — Claude Code skill installer
 # Usage:
 #   bash install.sh              install
 #   bash install.sh --force      reinstall over existing
@@ -16,7 +16,7 @@ for arg in "$@"; do
 done
 
 CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
-INSTALL_DIR="$CLAUDE_DIR/skills/grim"
+INSTALL_DIR="$CLAUDE_DIR/skills/grimTalk"
 SETTINGS="$CLAUDE_DIR/settings.json"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -28,9 +28,9 @@ fi
 # ---------- UNINSTALL ----------
 
 if [ "$UNINSTALL" -eq 1 ]; then
-  echo "Uninstalling grim..."
+  echo "Uninstalling grimTalk..."
   rm -rf "$INSTALL_DIR"
-  rm -f "${CLAUDE_DIR}/.grim-active"
+  rm -f "${CLAUDE_DIR}/.grimTalk-active"
   echo "  Removed: $INSTALL_DIR"
 
   if [ -f "$SETTINGS" ]; then
@@ -83,7 +83,7 @@ fi
 
 # ---------- INSTALL ----------
 
-echo "Installing grim..."
+echo "Installing grimTalk..."
 
 mkdir -p "$INSTALL_DIR/references"
 mkdir -p "$INSTALL_DIR/scripts"
@@ -117,7 +117,7 @@ with open(settings_path) as f:
 
 s.setdefault("hooks", {})
 
-# SessionStart — activate grim + write flag
+# SessionStart — activate grimTalk + write flag
 # Always replace existing grim entry (ensures activate script is used, not old cat)
 s["hooks"].setdefault("SessionStart", [])
 s["hooks"]["SessionStart"] = [
@@ -147,7 +147,7 @@ if not has_submit:
             "type": "command",
             "command": f'python3 "{install_dir}/grim-mode-tracker.py"',
             "timeout": 5,
-            "statusMessage": "Tracking grim mode"
+            "statusMessage": "Tracking grimTalk mode"
         }]
     })
     print("  UserPromptSubmit hook → settings.json")

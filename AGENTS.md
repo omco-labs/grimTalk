@@ -1,10 +1,10 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) and other agents when working with code in this repository.
 
 ## What This Is
 
-**grim** is a token-compression skill for AI coding agents. It wires into Claude Code (and Kiro) via hooks, emitting a terse warrior-bot communication mode. ~65% token reduction with full technical accuracy preserved.
+**grimTalk** is a token-compression skill for AI coding agents. It wires into Claude Code (and Kiro) via hooks, emitting a terse warrior-bot communication mode. ~65% token reduction with full technical accuracy preserved.
 
 Two layers:
 1. **Model-driven** — SKILL.md prompt defines style rules; hooks inject it into context each session
@@ -83,7 +83,7 @@ Prompt templates loaded on-demand by sub-skill triggers. Not active unless the u
 | `grim-help.md` | `/grim-help` |
 | `grim-stats.md` | `/grim-stats` |
 | `grim-style.md` | Core styleguide (loaded with SKILL.md) |
-| `dinobots.md` | "use dinobots" / "delegate to subagent" |
+| `din-bots.md` | "use din-bots" / "delegate to subagent" |
 
 ### SKILL.md vs CLAUDE.md
 
@@ -101,5 +101,5 @@ Prompt templates loaded on-demand by sub-skill triggers. Not active unless the u
 
 Priority order (highest first):
 1. `GRIM_DEFAULT_MODE` env var
-2. `~/.config/dinobot/config.json` → `{"defaultMode": "full"}`
+2. `~/.config/din-bot/config.json` → `{"defaultMode": "full"}`
 3. Hardcoded: `full`
