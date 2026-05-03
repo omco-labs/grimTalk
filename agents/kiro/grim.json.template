@@ -1,0 +1,29 @@
+{
+  "name": "grim",
+  "description": "Compressed communication mode. Cuts token usage ~65% while keeping technical accuracy.",
+  "prompt": "file://INSTALL_DIR/references/grim-style.md",
+  "welcomeMessage": "Me love challenge!",
+  "tools": ["*"],
+  "allowedTools": ["read","find","grep","cat"],
+  "resources": [
+    "file://README.md",
+     "file://AGENTS.md",
+     "file://.kiro/steering/**/*.md",
+     "file://INSTALL_DIR/references/dinobots.md",
+     "skill://~/.kiro/skills/**/SKILL.md"
+   ],
+  "hooks": {
+    "agentSpawn": [
+      {
+        "command": "bash \"INSTALL_DIR/grim-activate.sh\"",
+        "timeout_ms": 5000
+      }
+    ],
+    "userPromptSubmit": [
+      {
+        "command": "python3 \"INSTALL_DIR/grim-mode-tracker.py\"",
+        "timeout_ms": 5000
+      }
+    ]
+  }
+}

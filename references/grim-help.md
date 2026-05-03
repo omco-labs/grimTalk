@@ -6,9 +6,9 @@ Display this reference card when invoked. One-shot — do NOT change mode or per
 
 | Mode | Trigger | What change |
 |------|---------|-------------|
-| **Lite** | `/grimlock lite` | Drop filler. Keep sentence structure. |
-| **Full** | `/grimlock` or "dinobot mode" | Drop articles, filler, pleasantries, hedging. Fragments OK. Default. |
-| **Ultra** | `/grimlock ultra` | Extreme compression. Bare fragments. Tables over prose. |
+| **Lite** | `/grim lite` | Drop filler. Keep sentence structure. |
+| **Full** | `/grim` or "dinobot mode" | Drop articles, filler, pleasantries, hedging. Fragments OK. Default. |
+| **Ultra** | `/grim ultra` | Extreme compression. Bare fragments. Tables over prose. |
 
 Mode stick until changed or session end.
 
@@ -30,7 +30,7 @@ See [grim-commit.md](grim-commit.md), [grim-review.md](grim-review.md), [grim-co
 
 ## Deactivate
 
-Say "stop grimlock", "stop dinobot", or "normal mode". Resume anytime with `/grimlock`, "smash word", or "dinobot mode".
+Say "stop grim", "stop dinobot", or "normal mode". Resume anytime with `/grim`, "smash word", or "dinobot mode".
 
 ## Configure Default Mode
 

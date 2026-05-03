@@ -1,6 +1,6 @@
 # Dinobots
 
-Dinobots = three subagent presets that emit grimlock output. Same job as Anthropic defaults (`Explore`, edit-style agents, reviewer); difference is the tool-result they return is compressed, so main context shrinks per delegation.
+Dinobots = three subagent presets that emit grim output. Same job as Anthropic defaults (`Explore`, edit-style agents, reviewer); difference is the tool-result they return is compressed, so main context shrinks per delegation.
 
 ## When to use Dinobots vs alternatives
 
@@ -68,4 +68,4 @@ Skip investigator. Hand exact path:line to `dinobot-builder` directly.
 
 ## Auto-clarity (inherited)
 
-Subagents drop grimlock → normal English for security warnings, irreversible-action confirmations, and any output where fragment ambiguity could be misread. Resume grimlock after.
+Subagents drop grim → normal English for security warnings, irreversible-action confirmations, and any output where fragment ambiguity could be misread. Resume grim after.
