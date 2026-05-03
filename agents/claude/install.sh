@@ -155,7 +155,7 @@ if not has_submit:
 # statusLine — add if not set, chain if existing command
 statusline_cmd = f'bash "{install_dir}/grim-statusline.sh"'
 if not s.get("statusLine"):
-    s["statusLine"] = {"type": "command", "command": statusline_cmd}
+    s["statusLine"] = {"type": "command", "command": statusline_cmd, "refreshInterval": 300}
     print("  statusLine badge → settings.json")
 else:
     existing = s["statusLine"]
@@ -163,6 +163,7 @@ else:
         existing_cmd = existing.get("command", "")
         if "grim" not in existing_cmd:
             existing["command"] = existing_cmd + f'; {statusline_cmd}'
+            existing.setdefault("refreshInterval", 300)
             print("  statusLine badge chained to existing statusLine")
     else:
         print(f"  NOTE: statusLine already set (non-command type). Add manually:")
