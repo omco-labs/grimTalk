@@ -11,4 +11,4 @@ FLAG="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/.grim-active"
 [ -L "$FLAG" ] && exit 0
 [ ! -f "$FLAG" ] && exit 0
 
-printf '\033[38;5;220m[ME KING]\033[0m'
+printf '\033[38;5;220m[Bots Win]\033[0m'

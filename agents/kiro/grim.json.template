@@ -4,7 +4,7 @@
   "prompt": "file://INSTALL_DIR/references/grim-style.md",
   "welcomeMessage": "Me love challenge!",
   "tools": ["*"],
-  "allowedTools": ["read","find","grep","cat"],
+  "allowedTools": ["read","find","grep","cat","ls","rg","fd","cp","mkdir","cd","pwd"],
   "resources": [
     "file://README.md",
      "file://AGENTS.md",
