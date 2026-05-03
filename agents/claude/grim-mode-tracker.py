@@ -10,7 +10,6 @@ from pathlib import Path
 
 claude_dir = Path(os.environ.get("CLAUDE_CONFIG_DIR", Path.home() / ".claude"))
 flag_path = claude_dir / ".grim-active"
-skill_md = Path(__file__).parent / "SKILL.md"
 
 DEACTIVATE = re.compile(
     r"\b(stop|disable|deactivate|turn off)\b.{0,20}\b(grim|dinobot)\b"

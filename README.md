@@ -29,7 +29,7 @@ Writes skill files to `~/.kiro/skills/grim/` and agent config to `~/.kiro/agents
 
 Start kiro with the Grim agent:
 ```bash
-krio-cli chat --agent grim
+kiro-cli chat --agent grim
 ```
 
 Set grim as the default agent:
@@ -45,7 +45,7 @@ bash agents/claude/install.sh
 
 Reinstall: `--force`. Remove: `--uninstall`.
 
-Writes skill files to `~/.claude/skills/grm/` and wires `SessionStart` + `UserPromptSubmit` hooks into `~/.claude/settings.json`. Restart Claude Code to activate.
+Writes skill files to `~/.claude/skills/grim/` and wires `SessionStart` + `UserPromptSubmit` hooks into `~/.claude/settings.json`. Restart Claude Code to activate.
 
 **Requires:** Python 3.10+ (for `grim-compress` only; all other sub-skills are model-driven)
 

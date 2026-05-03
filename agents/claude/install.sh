@@ -16,7 +16,7 @@ for arg in "$@"; do
 done
 
 CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
-INSTALL_DIR="$CLAUDE_DIR/skills/grm"
+INSTALL_DIR="$CLAUDE_DIR/skills/grim"
 SETTINGS="$CLAUDE_DIR/settings.json"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -92,9 +92,9 @@ SCRIPT_DIR_REAL="$(python3 -c "import os,sys; print(os.path.realpath(sys.argv[1]
 INSTALL_DIR_REAL="$(python3 -c "import os,sys; print(os.path.realpath(sys.argv[1]))" "$INSTALL_DIR")"
 
 if [ "$SCRIPT_DIR_REAL" != "$INSTALL_DIR_REAL" ]; then
-  cp "$SCRIPT_DIR/SKILL.md"                    "$INSTALL_DIR/SKILL.md"
-  cp "$SCRIPT_DIR/references/"*.md             "$INSTALL_DIR/references/"
-  cp "$SCRIPT_DIR/scripts/"*.py                "$INSTALL_DIR/scripts/"
+  cp "$SCRIPT_DIR/../../SKILL.md"              "$INSTALL_DIR/SKILL.md"
+  cp "$SCRIPT_DIR/../../references/"*.md       "$INSTALL_DIR/references/"
+  cp "$SCRIPT_DIR/../../scripts/"*.py          "$INSTALL_DIR/scripts/"
   cp "$SCRIPT_DIR/grim-statusline.sh"      "$INSTALL_DIR/grim-statusline.sh"
   cp "$SCRIPT_DIR/grim-activate.sh"        "$INSTALL_DIR/grim-activate.sh"
   cp "$SCRIPT_DIR/grim-mode-tracker.py"    "$INSTALL_DIR/grim-mode-tracker.py"
@@ -168,10 +168,46 @@ else:
         print(f"  NOTE: statusLine already set (non-command type). Add manually:")
         print(f"    {statusline_cmd}")
 
+# Caveman conflict — disable if detected
+caveman_disabled = []
+
+plugins = s.get("enabledPlugins", {})
+if plugins.get("caveman@caveman"):
+    plugins["caveman@caveman"] = False
+    caveman_disabled.append("plugin disabled")
+
+for event in ("SessionStart", "UserPromptSubmit"):
+    hooks_list = s.get("hooks", {}).get(event, [])
+    filtered = [
+        e for e in hooks_list
+        if not any("caveman" in (hk.get("command", "") + hk.get("statusMessage", ""))
+                   for hk in e.get("hooks", []))
+    ]
+    if len(filtered) < len(hooks_list):
+        s["hooks"][event] = filtered
+        caveman_disabled.append(f"{event} hook removed")
+
+if isinstance(s.get("statusLine"), dict):
+    cmd = s["statusLine"].get("command", "")
+    if "caveman" in cmd:
+        parts = [p.strip() for p in cmd.split(";") if "caveman" not in p]
+        s["statusLine"]["command"] = "; ".join(parts)
+        caveman_disabled.append("statusLine cleaned")
+
+if caveman_disabled:
+    print("  Caveman conflict resolved: " + ", ".join(caveman_disabled))
+
 with open(settings_path, "w") as f:
     json.dump(s, f, indent=2)
     f.write("\n")
 PY
+
+# Remove caveman flag file so badge clears immediately
+CAVEMAN_FLAG="${CLAUDE_DIR}/.caveman-active"
+if [ -f "$CAVEMAN_FLAG" ] && [ ! -L "$CAVEMAN_FLAG" ]; then
+  rm -f "$CAVEMAN_FLAG"
+  echo "  .caveman-active flag removed"
+fi
 
 echo ""
 echo "Done. Restart Claude Code to activate."
