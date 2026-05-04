@@ -29,12 +29,12 @@ Writes skill files to `~/.kiro/skills/grimTalk/` and agent config to `~/.kiro/ag
 
 Start kiro with the grimTalk agent:
 ```bash
-kiro-cli chat --agent grim
+kiro-cli chat --agent grimTalk
 ```
 
 Set grim as the default agent:
 ```bash
-kiro-cli settings chat.defaultAgent grim
+kiro-cli settings chat.defaultAgent grimTalk
 ```
 
 ### Claude Code

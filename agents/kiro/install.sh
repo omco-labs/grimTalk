@@ -17,7 +17,7 @@ done
 
 KIRO_DIR="${KIRO_CONFIG_DIR:-$HOME/.kiro}"
 INSTALL_DIR="$KIRO_DIR/skills/grimTalk"
-AGENT_FILE="$KIRO_DIR/agents/grim.json"
+AGENT_FILE="$KIRO_DIR/agents/grimTalk.json"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # ---------- UNINSTALL ----------
@@ -59,7 +59,7 @@ echo "  Skill files → $INSTALL_DIR"
 chmod +x "$INSTALL_DIR/grim-activate.sh"
 
 # Write agent config with resolved install path
-sed "s|INSTALL_DIR|$INSTALL_DIR|g" "$SCRIPT_DIR/grim.json.template" > "$AGENT_FILE"
+sed "s|INSTALL_DIR|$INSTALL_DIR|g" "$SCRIPT_DIR/grimTalk.json.template" > "$AGENT_FILE"
 echo "  Agent config → $AGENT_FILE"
 
 echo ""
