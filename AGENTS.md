@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) and other agents whe
 
 ## What This Is
 
-**grimTalk** is a token-compression skill for AI coding agents. It wires into Claude Code (and Kiro) via hooks, emitting a terse warrior-bot communication mode. ~65% token reduction with full technical accuracy preserved.
+**grimTalk** is a token-compression skill for AI coding agents. It wires into harness systems via hooks, emitting a terse warrior-bot communication mode. ~65% token reduction with full technical accuracy preserved.
 
 Two layers:
 1. **Model-driven** — SKILL.md prompt defines style rules; hooks inject it into context each session
@@ -87,19 +87,12 @@ Prompt templates loaded on-demand by sub-skill triggers. Not active unless the u
 
 ### SKILL.md vs CLAUDE.md
 
-`SKILL.md` is the user-facing skill definition (used by the harness to inject context). `CLAUDE.md` is for developers working in this repo. Don't conflate them.
+`SKILL.md` is the user-facing skill definition (used by the harness to inject context). `CLAUDE.md` and `AGENTS.md` is for developers working in this repo. Don't conflate them.
 
 ## Key Design Constraints
 
-- **Intensity levels**: `lite` (articles kept, full sentences), `full` (default, fragments OK), `ultra` (abbreviate prose, arrows for causality). Code symbols, API names, error strings: never abbreviated at any level.
 - **Auto-clarity**: Drop grim prose for security warnings, irreversible action confirmations, and any place compression creates ambiguous ordering.
 - **Backup before compress**: `compress.py` always writes `<name>.original.md` and verifies it before touching the primary file.
 - **No outer fence**: Compression prompt instructs Claude to return raw content, not wrapped in ` ```markdown ``` `, to prevent double-fencing when written to disk.
 - **Caveman conflict**: Install script detects and disables the legacy `caveman` plugin (grim's predecessor).
 
-## Default Mode Configuration
-
-Priority order (highest first):
-1. `GRIM_DEFAULT_MODE` env var
-2. `~/.config/din-bot/config.json` → `{"defaultMode": "full"}`
-3. Hardcoded: `full`
