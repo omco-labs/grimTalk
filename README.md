@@ -1,4 +1,4 @@
-<img src="docs/grimTalk.svg" alt="grimTalk logo" height="100" align="left">
+<img src="docs/8bit.svg" alt="grimTalk logo" height="100" align="left">
 
 > **Disclaimer:** grimTalk is not affiliated with Hasbro or Transformers.
 
