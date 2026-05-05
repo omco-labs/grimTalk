@@ -8,7 +8,11 @@ import re
 import sys
 from pathlib import Path
 
-claude_dir = Path(os.environ.get("CLAUDE_CONFIG_DIR", Path.home() / ".claude"))
+_config_dir_env = os.environ.get("CLAUDE_CONFIG_DIR", "")
+if _config_dir_env and "\x00" not in _config_dir_env:
+    claude_dir = Path(_config_dir_env).resolve()
+else:
+    claude_dir = Path.home() / ".claude"
 flag_path = claude_dir / ".grim-active"
 
 DEACTIVATE = re.compile(

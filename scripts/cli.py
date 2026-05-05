@@ -34,7 +34,11 @@ def main():
         print_usage()
         sys.exit(1)
 
-    filepath = Path(sys.argv[1])
+    raw = sys.argv[1]
+    if "\x00" in raw:
+        print(f"❌ Invalid path: {raw!r}")
+        sys.exit(1)
+    filepath = Path(raw).resolve()
 
     # Check file exists
     if not filepath.exists():
@@ -44,8 +48,6 @@ def main():
     if not filepath.is_file():
         print(f"❌ Not a file: {filepath}")
         sys.exit(1)
-
-    filepath = filepath.resolve()
 
     # Detect file type
     file_type = detect_file_type(filepath)

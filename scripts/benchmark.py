@@ -44,6 +44,10 @@ def print_table(rows):
 def main():
     # Direct file pair: python3 benchmark.py original.md compressed.md
     if len(sys.argv) == 3:
+        for arg in sys.argv[1:3]:
+            if "\x00" in arg:
+                print(f"❌ Invalid path: {arg!r}")
+                sys.exit(1)
         orig = Path(sys.argv[1]).resolve()
         comp = Path(sys.argv[2]).resolve()
         if not orig.exists():

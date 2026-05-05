@@ -8,7 +8,11 @@ import re
 import sys
 from pathlib import Path
 
-kiro_dir = Path(os.environ.get("KIRO_CONFIG_DIR", Path.home() / ".kiro"))
+_config_dir_env = os.environ.get("KIRO_CONFIG_DIR", "")
+if _config_dir_env and "\x00" not in _config_dir_env:
+    kiro_dir = Path(_config_dir_env).resolve()
+else:
+    kiro_dir = Path.home() / ".kiro"
 flag_path = kiro_dir / ".grim-active"
 
 DEACTIVATE = re.compile(

@@ -195,6 +195,10 @@ if __name__ == "__main__":
         print("Usage: python validate.py <original> <compressed>")
         sys.exit(1)
 
+    for arg in sys.argv[1:3]:
+        if "\x00" in arg:
+            print(f"❌ Invalid path: {arg!r}")
+            sys.exit(1)
     orig = Path(sys.argv[1]).resolve()
     comp = Path(sys.argv[2]).resolve()
 

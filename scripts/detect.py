@@ -115,6 +115,9 @@ if __name__ == "__main__":
         sys.exit(1)
 
     for path_str in sys.argv[1:]:
+        if "\x00" in path_str:
+            print(f"  {'<invalid>':30s} type={'error':20s} compress=False")
+            continue
         p = Path(path_str).resolve()
         file_type = detect_file_type(p)
         compress = should_compress(p)
