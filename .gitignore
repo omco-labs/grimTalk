@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+wheels/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+
+# Type checkers
+.mypy_cache/
+.ruff_cache/
+.pytype/
+
+# Distribution / packaging
+MANIFEST
+pip-wheel-metadata/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CI artifacts
+bandit-report.json
+agent-scan-report.json
+
+# Compression backups
+*.original.md
