@@ -15,9 +15,9 @@
  */
 
 import { randomBytes } from "crypto";
-import { appendFileSync, existsSync, readFileSync, writeFileSync } from "fs";
+import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { homedir } from "os";
-import { join } from "path";
+import { join, dirname } from "path";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -100,7 +100,9 @@ function emitSpan(sessionId: string, span: SpanData): void {
   }
 
   // Always write JSONL (zero deps, always available)
-  appendFileSync(otelPath(sessionId), line);
+  const p = otelPath(sessionId);
+  mkdirSync(dirname(p), { recursive: true });
+  appendFileSync(p, line);
 }
 
 function closeSpan(
