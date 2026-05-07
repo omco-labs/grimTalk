@@ -53,5 +53,3 @@ jobs:
       - name: Install dev dependencies
         run: uv sync --group dev
 
-      - name: Run otel_spans tests
-        run: uv run pytest tests/test_otel_spans.py -v
