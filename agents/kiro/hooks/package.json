@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@opentelemetry/sdk-node": "0.57.0",
-    "@opentelemetry/exporter-trace-otlp-grpc": "0.57.0"
-  }
-}

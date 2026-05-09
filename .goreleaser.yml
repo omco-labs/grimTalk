@@ -1,0 +1,37 @@
+version: 2
+project_name: grimTalk
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: otel_spans
+    main: ./agents/kiro/hooks
+    binary: otel_spans
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+
+archives:
+  - id: otel_spans
+    builds: [otel_spans]
+    format: binary
+    name_template: "otel_spans-{{ .Os }}-{{ .Arch }}"
+
+checksum:
+  name_template: "checksums.txt"
+
+release:
+  github:
+    owner: omco-labs
+    name: grimTalk
+  draft: false
+  prerelease: auto

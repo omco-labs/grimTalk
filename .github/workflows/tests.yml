@@ -35,21 +35,18 @@ jobs:
           name: coverage-report
           path: coverage.xml
 
-  test-bun-hooks:
-    name: Bun hooks (otel_spans.ts)
+  test-go-hooks:
+    name: Go hooks (otel_spans)
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-go@v5
         with:
-          bun-version: latest
+          go-version: '1.26'
+          cache: true
 
-      - uses: astral-sh/setup-uv@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install dev dependencies
-        run: uv sync --group dev
+      - name: Test otel_spans
+        run: go test ./agents/kiro/hooks/... -v -count=1
 

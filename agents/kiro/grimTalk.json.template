@@ -19,7 +19,7 @@
         "timeout_ms": 5000
       },
       {
-        "command": "bun run \"INSTALL_DIR/hooks/otel_spans.ts\"",
+        "command": "\"INSTALL_DIR/hooks/otel_spans\"",
         "timeout_ms": 5000
       }
     ],
@@ -29,25 +29,25 @@
         "timeout_ms": 5000
       },
       {
-        "command": "bun run \"INSTALL_DIR/hooks/otel_spans.ts\"",
+        "command": "\"INSTALL_DIR/hooks/otel_spans\"",
         "timeout_ms": 5000
       }
     ],
     "preToolUse": [
       {
-        "command": "bun run \"INSTALL_DIR/hooks/otel_spans.ts\"",
+        "command": "\"INSTALL_DIR/hooks/otel_spans\"",
         "timeout_ms": 5000
       }
     ],
     "postToolUse": [
       {
-        "command": "bun run \"INSTALL_DIR/hooks/otel_spans.ts\"",
+        "command": "\"INSTALL_DIR/hooks/otel_spans\"",
         "timeout_ms": 5000
       }
     ],
     "stop": [
       {
-        "command": "bun run \"INSTALL_DIR/hooks/otel_spans.ts\"",
+        "command": "\"INSTALL_DIR/hooks/otel_spans\"",
         "timeout_ms": 5000
       }
     ]

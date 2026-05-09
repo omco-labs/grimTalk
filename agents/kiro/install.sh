@@ -20,10 +20,14 @@ INSTALL_DIR="$KIRO_DIR/skills/grimTalk"
 AGENT_FILE="$KIRO_DIR/agents/grimTalk.json"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if ! command -v bun >/dev/null 2>&1; then
-  echo "ERROR: bun required for OTEL hooks (https://bun.sh)"
-  exit 1
-fi
+GITHUB_REPO="omco-labs/grimTalk"
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$(uname -m)
+case "$ARCH" in
+  x86_64)        ARCH="amd64" ;;
+  arm64|aarch64) ARCH="arm64" ;;
+  *) echo "ERROR: unsupported architecture: $ARCH"; exit 1 ;;
+esac
 
 # ---------- UNINSTALL ----------
 
@@ -55,15 +59,26 @@ mkdir -p "$INSTALL_DIR/scripts"
 mkdir -p "$INSTALL_DIR/hooks"
 mkdir -p "$KIRO_DIR/agents"
 
-cp "$SCRIPT_DIR/../../SKILL.md"              "$INSTALL_DIR/SKILL.md"
-cp "$SCRIPT_DIR/../../references/"*.md       "$INSTALL_DIR/references/"
-cp "$SCRIPT_DIR/../../scripts/"*.py          "$INSTALL_DIR/scripts/"
-cp "$SCRIPT_DIR/grim-activate.sh"        "$INSTALL_DIR/grim-activate.sh"
-cp "$SCRIPT_DIR/grim-mode-tracker.py"    "$INSTALL_DIR/grim-mode-tracker.py"
-cp "$SCRIPT_DIR/hooks/otel_spans.ts"     "$INSTALL_DIR/hooks/otel_spans.ts"
-cp "$SCRIPT_DIR/hooks/package.json"      "$INSTALL_DIR/hooks/package.json"
+cp "$SCRIPT_DIR/../../SKILL.md"           "$INSTALL_DIR/SKILL.md"
+cp "$SCRIPT_DIR/../../references/"*.md    "$INSTALL_DIR/references/"
+cp "$SCRIPT_DIR/../../scripts/"*.py       "$INSTALL_DIR/scripts/"
+cp "$SCRIPT_DIR/grim-activate.sh"         "$INSTALL_DIR/grim-activate.sh"
+cp "$SCRIPT_DIR/grim-mode-tracker.py"     "$INSTALL_DIR/grim-mode-tracker.py"
 echo "  Skill files → $INSTALL_DIR"
-echo "  Optional OTLP export: cd \"$INSTALL_DIR/hooks\" && bun install"
+
+BINARY_URL="https://github.com/${GITHUB_REPO}/releases/latest/download/otel_spans-${OS}-${ARCH}"
+HOOK_BINARY="$INSTALL_DIR/hooks/otel_spans"
+echo "  Downloading otel_spans binary (${OS}/${ARCH})..."
+if command -v curl >/dev/null 2>&1; then
+  curl -fsSL "$BINARY_URL" -o "$HOOK_BINARY"
+elif command -v wget >/dev/null 2>&1; then
+  wget -qO "$HOOK_BINARY" "$BINARY_URL"
+else
+  echo "ERROR: curl or wget required to download hook binary"
+  exit 1
+fi
+chmod +x "$HOOK_BINARY"
+echo "  Hook binary → $HOOK_BINARY"
 
 chmod +x "$INSTALL_DIR/grim-activate.sh"
 
